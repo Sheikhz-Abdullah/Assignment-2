@@ -15,3 +15,18 @@ class VendingMachine:
 
         # Variable that monitors the user's current machine balance.
         self.balance = 0.0
+
+    # Describes the display_menu function, which shows the vending machine's inventory of available items arranged by type.
+    def display_menu(self):
+        print("\nWelcome to the Vending Machine! Here is the menu:")
+
+        # Repeat for every category and its items.
+        for category, products in self.items.items():
+            print(f"\n{category}:")
+
+            # Review each product's details, including price and stock.
+            for product, (price, stock) in products.items():
+
+                # Show the current stock level; if it is zero, display 'Out of Stock'. If not, show the cost and amount available.
+                stock_status = "Out of Stock" if stock == 0 else f"${price:.2f} ({stock} left)"
+                print(f"  {product}: {stock_status}")
