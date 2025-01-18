@@ -30,3 +30,30 @@ class VendingMachine:
                 # Show the current stock level; if it is zero, display 'Out of Stock'. If not, show the cost and amount available.
                 stock_status = "Out of Stock" if stock == 0 else f"${price:.2f} ({stock} left)"
                 print(f"  {product}: {stock_status}")
+                
+    def select_item(self):
+
+        # A way to let the consumer choose what they want to buy.
+        while True:
+
+            # Request that the user input the desired item's name.
+            choice = input("\nEnter the name of the item you want to buy: ").strip().capitalize()
+
+            # To determine the user's preference, loop through the categories and their offerings.
+            for category, products in self.items.items():
+                if choice in products:
+
+                    # Get the chosen item's price and stock level.
+                    price, stock = products[choice]
+                    if stock > 0:
+
+                        # Return the item's details if it is in stock.
+                        return choice, price, category
+                    else:
+
+                        # If the item is out of stock, let the user know.
+                        print(f"Sorry, {choice} is out of stock.")
+                        return None, None, None
+                    
+            # Ask the user to try again if the input is incorrect.
+            print("Invalid selection. Please choose an item from the menu.")
