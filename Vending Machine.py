@@ -57,3 +57,27 @@ class VendingMachine:
                     
             # Ask the user to try again if the input is incorrect.
             print("Invalid selection. Please choose an item from the menu.")
+
+    def insert_money(self, price):
+
+        # How to manage the user's money entry for the chosen item and show the user the item's price.
+        print(f"The price of your item is ${price:.2f}.")
+
+        # Continue until the user's balance is enough to pay for the item.
+        while self.balance < price:
+            try:
+
+                # Request money from the user and convert it to a float.
+                money = float(input(f"Insert money (Current balance: ${self.balance:.2f}): "))
+                if money <= 0:
+
+                    # Make sure the user enters an amount that is positive.
+                    print("Please insert a positive amount.")
+                else:
+
+                    # To the user's balance, add the money that was inserted.
+                    self.balance += money
+            except ValueError:
+
+                # Adaptably handle non-numeric input
+                print("Invalid input. Please enter a numeric value.")
