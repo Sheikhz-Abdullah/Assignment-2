@@ -149,3 +149,24 @@ class VendingMachine:
 
                 # Provide a substitute product from a different category.
                 self.suggest_item(category)
+
+                # Ask the consumer whether they want to purchase another item.
+                while True:
+                    another = input("\nWould you like to buy another item? (yes/no): ").strip().lower()
+                    if another == "yes":
+
+                        # Restart the purchasing procedure by breaking out of the loop.
+                        break
+                    elif another == "no":
+
+                        # Thank the user, then close the application.
+                        print("Thank you for using the Vending Machine. Goodbye!")
+                        return
+                    else:
+
+                        # Deal with invalid input.
+                        print("Invalid input. Please enter 'yes' or 'no'.")
+
+# Run the Vending Machine.
+vending_machine = VendingMachine()
+vending_machine.start()
