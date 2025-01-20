@@ -111,3 +111,20 @@ class VendingMachine:
 
             # Put the balance back to zero.
             self.balance = 0.0
+
+    def suggest_item(self, category):
+
+        # How to recommend a different product from a different category.
+        print("\nSuggestion:")
+
+        # Go over each category and its products one by one.
+        for other_category, products in self.items.items():
+            if other_category != category:
+
+                # Ignore the item's current category that was purchased.
+                for product, (price, stock) in products.items():
+                    if stock > 0:
+
+                        # Provide the first item from a different category that is available.
+                        print(f"  {product} (${price:.2f})")
+                        return
