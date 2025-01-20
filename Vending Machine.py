@@ -100,3 +100,14 @@ class VendingMachine:
 
         # To give the user their remaining balance back, utilise the return_change method.
         self.return_change()
+    
+    def return_change(self):
+
+        # How to give the user their money back if there is any left over.
+        if self.balance > 0:
+
+            # Notify the user of the amount being returned.
+            print(f"Returning change: ${self.balance:.2f}")
+
+            # Put the balance back to zero.
+            self.balance = 0.0
