@@ -128,3 +128,24 @@ class VendingMachine:
                         # Provide the first item from a different category that is available.
                         print(f"  {product} (${price:.2f})")
                         return
+                    
+    def start(self):
+
+        # How to begin the vending machine operation.
+        while True:
+
+            # Display the menu to the user.
+            self.display_menu()
+
+            # Let the user choose an item.
+            item, price, category = self.select_item()
+            if item:
+
+                # If a valid item is selected, handle the money insertion process.
+                self.insert_money(price)
+
+                # Give the chosen thing out.
+                self.dispense_item(item, price)
+
+                # Provide a substitute product from a different category.
+                self.suggest_item(category)
