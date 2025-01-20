@@ -79,5 +79,24 @@ class VendingMachine:
                     self.balance += money
             except ValueError:
 
-                # Adaptably handle non-numeric input
+                # Adaptably handle non-numeric input.
                 print("Invalid input. Please enter a numeric value.")
+    
+    # Technique for giving the user the chosen item.
+    def dispense_item(self, item, price):
+
+        # Take the cost of the item out of the user's balance.
+        self.balance -= price
+
+        # Find and update the stock of the chosen item by iterating through the categories.
+        for category, products in self.items.items():
+            if item in products:
+
+                # Cut the dispensed item's stock quantity by one.
+                products[item][1] -= 1
+        
+        # As the item is being distributed, let the user know.
+        print(f"Dispensing {item}. Enjoy!")
+
+        # To give the user their remaining balance back, utilise the return_change method.
+        self.return_change()
